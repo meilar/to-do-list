@@ -18,23 +18,32 @@
     </div>
     <div class="task-form">
       <form id="task-entry">
-        <label for="task-name">Enter the name of your to-do</label>
-        <input type="text" name="task-name" id="task-name" placeholder="Complete this action">
-        <label for="task-name">Enter a due date</label>
-        <input type="date" name="task-date" id="task-date">
-        <label for="task-assign">This task is assigned to:</label>
-        <select name="task-assign" id="task-assign">
-          <option value="me">Me</option>
-          <option value="else">Someone Else</option>
-        </select>
-        <button type="submit">Submit</button>
+        <div class="form-group">
+          <label for="task-name">Enter a to-do</label>
+          <input class="form-control" type="text" name="task-name" id="task-name" placeholder="Complete this action">  
+        <div>
+        <div class="form-group">
+          <label for="task-name">Enter a due date</label>
+          <input class="form-control" type="date" name="task-date" id="task-date">  
+        </div>
+        <div class="form-group">
+          <label for="task-assign">Assign this task to:</label>
+          <select class="form-control" name="task-assign" id="task-assign">
+            <option value="Me">Me</option>
+            <option value="Someone Else">Someone Else</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <button class="btn btn-primary form-control" type="submit">Submit</button>
+        </div>
       </form>
     </div>
-    <div class="status">
+    <div class="status hidden">
       <div id="main-task-status">
         <h4>Main Task List</h4>
         <ul id="main-task-list">
         </ul>
+        <button id="reset-btn" type="reset" class="btn btn-danger">Delete Selected Task<button>
       </div>
       <div id="me-task-status">
         <h4>My Tasks</h4>
