@@ -12,11 +12,11 @@
 </head>
 <body>
   <div class="container">
-    <div class="intro">
+    <div class="intro row">
       <h1>To-Do List</h1>
       <p>Enter your task details in the form below. When you submit a new task, your task dashboard will refresh. To delete a task, select the task from your main task list and click the delete button.</p>
     </div>
-    <div class="task-form">
+    <div class="task-form row">
       <form id="task-entry">
         <div class="form-group">
           <label for="task-name">Enter a to-do</label>
@@ -38,34 +38,24 @@
         </div>
       </form>
     </div>
-    <div class="status hidden">
-      <div id="main-task-status">
-        <h4>Main Task List</h4>
-        <ul id="main-task-list">
-        </ul>
-        <button id="reset-btn" type="reset" class="btn btn-danger">Delete Selected Task<button>
-      </div>
-      <div id="me-task-status">
-        <h4>My Tasks</h4>
-        <ul id="me-task-list">
-        </ul>
-      </div>
-      <div id="else-task-status">
-        <h4>Everyone Else's Tasks</h4>
-        <ul id="else-task-list">
-        </ul>
-      </div>
-      <div id="today-task-status">
-        <h4>Due Today</h4>
-        <ul id="today-task-list">
-        </ul>
-      </div>
-      <div id="later-task-status">
-        <h4>Due Later</h4>
-        <ul id="later-task-list">
-        </ul>
+      <div class="status hidden">
+        <div id="main-task-status" class="list-div">
+          <h4>Main Task List</h4>
+          <ul id="main-task-list">
+          </ul>
+          <button id="reset-btn" type="reset" class="btn btn-danger">Delete Selected Task</button>
+        </div>
+        <div id="me-task-status" class="list-div">
+          <h4>My Tasks</h4>
+          <ul id="me-task-list">
+          </ul>
+        </div>
+        <div id="else-task-status" class="list-div">
+          <h4>Everyone Else's Tasks</h4>
+          <ul id="else-task-list">
+          </ul>
+        </div>
       </div>
     </div>
-  </div>
 </body>
 </html>

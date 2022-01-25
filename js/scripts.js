@@ -16,6 +16,13 @@ ToDoList.prototype.addToDo = function(toDo) {
   this.toDos[toDo.id] = toDo;
 }
 
+ToDoList.prototype.deleteToDo = function(id) {
+  if (this.toDos[id] === undefined) {
+    return false;
+  }
+  delete this.toDos[id];
+}
+
 ToDoList.prototype.assignId = function() {
   this.currentId += 1;
   return this.currentId;
@@ -23,7 +30,6 @@ ToDoList.prototype.assignId = function() {
 
 let userList = new ToDoList();
 
-// delete button creates new blank array, then function to check for checkboxes, some way to get a value relating to the todolist index, then we have an array full of index numbers, for each loop to delete from todolist and remove/hide css class based also on index number
 
 // User Interface
 
@@ -37,7 +43,15 @@ function displayTasks() {
   let index = userList.currentId;
   let taskClass = "to-do-" + index;
   let taskText = getText(index);
-  $("#main-task-list").append("<li class='" + taskClass + "'><input class='" + taskClass + "' type='checkbox'>" + taskText + "</input></li>");
+  let listContent = "<li class='" + taskClass + "'><input class='" + taskClass + "' type='checkbox'>" + taskText + "</input></li>"
+
+  $("#main-task-list").append(listContent);
+
+  if (userList.toDos[index].assignTo === "Me") {
+    $("#me-task-list").append("<li class='" + taskClass + "'>" + taskText + "</li>");
+  } else {
+    $("#else-task-list").append("<li class='" + taskClass + "'>" + taskText + "</li>");
+  }
 }
 
 function submitTask() {
@@ -50,28 +64,13 @@ function submitTask() {
     return userList;
 }
 
-// $("input[type='checkbox']").val();
-
-// if ($('#check_id').is(":checked"))
-//{
-  // it is checked
-//}
-
-// const toDoCheck = {
-//   blah: blahblah;
-//   blah2: blahblah
-// }
-// Object.keys(toDoCheck).forEach(key => {
-
-// })
-
-
 $(document).ready(function(event) {
   $("#task-entry").submit(function(event){
     event.preventDefault();
     submitTask();
     displayTasks();
     $(".status").show();
+    $('#task-entry input[type="text"]').val('');
   })
   $("#reset-btn").click(function(event) {
     event.preventDefault();
@@ -79,8 +78,8 @@ $(document).ready(function(event) {
      for (let i = 0; i <= userList.currentId; i++) {
        console.log(userList.currentId);
       if ($('input.to-do-' + i).is(":checked")) {
-        console.log("for loop is triggering")
         $('.to-do-' + i).remove();
+        userList.deleteToDo(i); 
       }
     }
     
